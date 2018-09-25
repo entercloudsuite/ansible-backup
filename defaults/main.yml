@@ -120,6 +120,8 @@ restic_before_check_script: ""
 restic_after_check_script: ""
 restic_before_prune_script: ""
 restic_after_prune_script: ""
+restic_before_notification_script: ""
+restic_after_notification_script: ""
         
 #+----------------------------------------------------------------------------+
 #|                                                                            |
