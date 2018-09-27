@@ -29,7 +29,7 @@ START=$(date "+%s")
 TIMESTAMP=$(date --iso | tr -d -)
 {% if restic_activator != "systemd" -%} >  RESTIC_BACKUP_LOG_PATH="{{backup_logpath}}" {%- endif %}
 # set check variable to 1
-I=1
+I=0
 BACKUPPATH="{{restic_backup_path}}"
 mkdir -p "{{restic_backup_path}}"
 mkdir -p "{{backup_logpath}}"
@@ -41,6 +41,7 @@ function prepare_bk {
 }
 
 {% if 'backup' in restic_functions %}
+I=$[$I+1]
 #+-----------------------------------------------------------------------------+
 #|                            BackUp                                           |
 #+-----------------------------------------------------------------------------+
@@ -68,6 +69,7 @@ fi
 {% endif %}
 
 {% if 'forget' in restic_functions %}
+I=$[$I+1]
 
 {{restic_before_forget_script}}
 
@@ -91,7 +93,7 @@ fi
 {% endif %}
 
 {% if 'check' in restic_functions %}
-
+I=$[$I+1]
 {{restic_before_check_script}}
 
 #+-----------------------------------------------------------------------------+
@@ -114,7 +116,7 @@ fi
 {% endif %}
 
 {% if 'prune' in restic_functions %}
-
+I=$[$I+1]
 {{restic_before_prune_script}}
 
 #+-----------------------------------------------------------------------------+
