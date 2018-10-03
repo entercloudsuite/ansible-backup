@@ -62,6 +62,8 @@ then
 
 else
     "{{restic_binary_path}}/restic" backup "{{restic_backup_path}}" {%- if restic_activator != "systemd" %} >  $RESTIC_BACKUP_LOG_PATH/backup.log; {%- endif %}
+
+
     sleep 5
     # nel caso la funziona di prepare fallisca esegui ugualmente il backup e poi invia la notifica di fallimento
     S=500
