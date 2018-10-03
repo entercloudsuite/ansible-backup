@@ -45,7 +45,7 @@ I=$[$I+1]
 #+-----------------------------------------------------------------------------+
 #|                            BackUp                                           |
 #+-----------------------------------------------------------------------------+
-if prepare_bk; 
+if prepare_bk ${@};
 then
     if "{{restic_binary_path}}/restic" backup "{{restic_backup_path}}" {%- if restic_activator != "systemd" %} >  $RESTIC_BACKUP_LOG_PATH/backup.log; {%- endif %}
 
