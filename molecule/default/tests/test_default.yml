@@ -1,12 +1,4 @@
 ---
-package:
-  cron:
-    installed: true
-  duplicity:
-    installed: true
-  logrotate:
-    installed: true
-  python-keystoneclient:
-    installed: true
-  python-swiftclient:
-    installed: true
+file:
+  /usr/local/bin/restic:
+    exists: true
