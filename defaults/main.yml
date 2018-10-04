@@ -74,7 +74,7 @@ restic_download_path: "/opt/restic"
 restic_binary_path: "/usr/local/bin"
 restic_install_path: "/usr/local/"
 backup_logpath: "/var/log/backup"
-restic_backup_path: "/var/backups/resitc{{utility}}"
+restic_backup_path: "/var/backups/restic{{utility}}"
 # UPPERCASE is not necessary but decide rule and keep it standard ;)
 #restic_service_to_backup: FILES # MYSQL MONGO
 restic_repository: "swift:{{utility}}:/"
