@@ -1,22 +1,22 @@
 
-- name: create restic script path in "{{ restic_download_path }}/restic"
+- name: create restic script path in '{{ restic_download_path }}/restic'
   file:
-    path: "{{ restic_install_path }}/restic"
+    path: '{{ restic_install_path }}/restic'
     state: directory
 
-- name: create restic script path in "{{ restic_download_path }}"
+- name: create restic script path in '{{ restic_download_path }}'
   file:
-    path: "{{ restic_download_path }}"
+    path: '{{ restic_download_path }}'
     state: directory
 
 - name: create restic path for binary in "{{ restic_binary_path }}"
   file:
-    path: "{{ restic_binary_path }}"
+    path: '{{ restic_binary_path }}'
     state: directory
 
-- name: create restic script path in "{{ restic_install_path }}/restic"
+- name: create restic script path in '{{ restic_install_path }}/restic'
   file:
-    path: "{{ restic_install_path }}/restic"
+    path: '{{ restic_install_path }}/restic'
     state: directory
 #
 #- name: create resti script path in "{{ restic_binary_path }}"
@@ -37,11 +37,13 @@
   register: get_url_restic
 
 - name: Decompress the binary
-  shell: "bzip2 -dc {{ restic_download_path }}/restic.bz2 > {{ restic_binary_path}}/restic"
+  shell: 'bzip2 -dc {{ restic_download_path }}/restic.bz2 > {{ restic_binary_path }}/restic'
+  args:
+    creates: '{{ restic_binary_path }}/restic'
 
 - name: Ensure permissions are correct
   file:
-    path: '{{ restic_binary_path}}/restic'
+    path: '{{ restic_binary_path }}/restic'
     mode: '0755'
     owner: 'root'
     group: 'root'
