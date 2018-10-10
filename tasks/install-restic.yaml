@@ -33,7 +33,6 @@
   get_url:
     url: '{{ restic_url_install }}'
     dest: '{{ restic_download_path }}/restic.bz2'
-    force: True
   register: get_url_restic
 
 - name: Decompress the binary
