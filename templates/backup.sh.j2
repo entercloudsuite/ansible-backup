@@ -151,10 +151,10 @@ END_TIME=$(date "+%s")
 runtime=$((END_TIME - START))
 if [[ "$I" == "$S" ]]
 then
-    curl -i -XPOST "http://{{ influxDB_url }}:{{ influxDB_port }}/write?db={{ influxDB_DatabaseName }}&u={{ influxDB_Username  }}&p={{ influxDB_Password }}" --data-binary "backup,customer=$CUSTOMER,host=$HOSTNAME,service_name=restic-data status=1,elapsed=$runtime"
+    curl -i -XPOST "http://{{ influxDB_url }}:{{ influxDB_port }}/write?db={{ influxDB_DatabaseName }}&u={{ influxDB_Username  }}&p={{ influxDB_Password }}" --data-binary "backup,customer=$CUSTOMER,host=$HOSTNAME,service_name={{ notification_service_name }} status=1,elapsed=$runtime"
     echo sent ok notification
 else
-    curl -i -XPOST "http://{{ influxDB_url }}:{{ influxDB_port }}/write?db={{ influxDB_DatabaseName }}&u={{ influxDB_Username  }}&p={{ influxDB_Password }}" --data-binary "backup,customer=$CUSTOMER,host=$HOSTNAME,service_name=restic-data status=2,elapsed=$runtime"
+    curl -i -XPOST "http://{{ influxDB_url }}:{{ influxDB_port }}/write?db={{ influxDB_DatabaseName }}&u={{ influxDB_Username  }}&p={{ influxDB_Password }}" --data-binary "backup,customer=$CUSTOMER,host=$HOSTNAME,service_name={{ notification_service_name }} status=2,elapsed=$runtime"
     echo sent fail notification
 fi
 
